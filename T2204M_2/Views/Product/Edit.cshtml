@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Product edit page";
+    var categories = ViewBag.categories;
+}
+@model T2204M_2.Models.EditProductViewModel
+
+<h2>Edit @Model.Name</h2>
+
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=>m.Id)
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Name)
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Price)
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Description)
+        @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Description)
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.ImageOld)
+        <img style="width: 70px; height: 70px; object-fit: cover" src="@Model.ImageOld">
+    </div>
+    <div class="mb-3">
+        <label>Upload</label>
+        <input type="file" name="ImageNew" class="form-control" />
+        @Html.ValidationMessageFor(m=>m.ImageNew)
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.CategoryId)
+        @Html.DropDownListFor(m => m.CategoryId, ViewData["Category"] as SelectList, "- Select Category -", new { @class = "form-control" })
+
+        @Html.ValidationMessageFor(m=>m.CategoryId)
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+
+    <div>
+        @Html.ActionLink("BackToList", "Index")
+    </div>
+}

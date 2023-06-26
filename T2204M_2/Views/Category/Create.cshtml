@@ -1,0 +1,21 @@
+﻿
+@model T2204M_2.Models.CategoryViewModel
+@{
+    ViewData["Title"] = "Category Create page";
+ 
+
+}
+<h1>Create Category Page</h1>
+
+@using (Html.BeginForm("Create", "Category", FormMethod.Post))
+    {
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m=>m.Name)
+    </div>
+   
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+}

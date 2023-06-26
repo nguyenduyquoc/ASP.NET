@@ -1,0 +1,63 @@
+﻿
+@model List<T2204M_2.Entities.Product>
+
+
+@{
+    ViewData["Title"] = "Category Page";
+    // var categories = ViewData["categories"];
+    //var categories = ViewBag.Categories;
+
+}
+<h1>List Product Page</h1>
+<div class="row" style="margin-bottom: 25px">
+    <div class="col-6">
+        <a asp-controller="Product" asp-action="Create">Create new product</a>
+    </div>
+    <div class="col-6">
+        @using (Html.BeginForm("Index", "Product", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-8">
+                    <input type="text" placeholder="enter name ...." name="nameSearch" class="form-control" />
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>  
+        }
+    </div>
+</div>
+
+<div class="col">
+    <table class="table">
+        <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Category</th>
+        <th>Action1</th>
+        <th>Action2</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>@item.Description</td>
+                    <td><img style="width: 60px; height: 60px; object-fit: cover; border: 1px solid #ff0000" src="@item.Image"></td>
+                    <td>@item.Category.Name</td>
+                    <td>@Html.ActionLink("Edit here","Edit", new {Id = item.Id})</td>
+                    <td>
+                        <a href="@Url.ActionLink("Delete", "Product", new {Id = item.Id })"
+                        onclick="return confirm('Xác nhận xóa @item.Name ?')" class="text-danger">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
