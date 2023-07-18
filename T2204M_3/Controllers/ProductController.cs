@@ -102,7 +102,7 @@ namespace T2204M_3.Controllers
                     Qty = data.qty,
                     Description = data.description,
                     CreatedAt = data.createdAt,
-                    CategoryId = data.category.id.Value,
+                    CategoryId = data.category.id,
                     BrandId = data.brand.id.Value
 
                 };

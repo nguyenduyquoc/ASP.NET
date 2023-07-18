@@ -1,0 +1,61 @@
+﻿@model List<T2204M_Practice.Entities.Contact>
+
+
+@{
+    ViewData["Title"] = "Contact Page";
+   
+
+}
+<h1>List Contact Page</h1>
+<div class="row" style="margin-bottom: 25px">
+    <div class="col-6">
+        <a asp-controller="Contact" asp-action="Create">Create new contact</a>
+    </div>
+    @*<div class="col-6">
+        @using (Html.BeginForm("Index", "Product", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-8">
+                    <input type="text" placeholder="enter name ...." name="nameSearch" class="form-control" />
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        }
+    </div>*@
+</div>
+
+<div class="col">
+    <table class="table">
+        <thead>
+        <th>Id</th>
+        <th>Contact Name</th>
+        <th>Contact Number</th>
+        <th>Group Name</th>
+        <th>Hire date</th>
+        <th>Birthday</th>
+        <th>Action1</th>
+        <th>Action2</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.ContactName</td>
+                    <td>@item.ContactNumber</td>
+                    <td>@item.GroupName</td>
+                    <td>@item.HireDate</td>
+                    <td>@item.Birthday</td>
+                    <td>@Html.ActionLink("Edit here","Edit", new {Id = item.Id})</td>
+                    <td>
+                        @*<a href="@Url.ActionLink("Delete", "Product", new {Id = item.Id })"
+                       onclick="return confirm('Xác nhận xóa @item.Name ?')" class="text-danger">Delete</a>*@
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
