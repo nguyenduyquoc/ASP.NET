@@ -27,23 +27,24 @@ namespace T2204M_Practice.Controllers
         }
 
 
-        /*[HttpPost]
-        public IActionResult Create(ContactViewModel viewModel)
+        [HttpPost]
+        public IActionResult Create(ContaxtViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Contacts.Add(new Contact {
+                _context.Contacts.Add(new Contact
+                {
                     ContactName = viewModel.ContactName,
                     ContactNumber = viewModel.ContactNumber,
-                    GroupName= viewModel.GroupName,
-                    HireDate= viewModel.HireDate,
-                    Birthday= viewModel.Birthday
+                    GroupName = viewModel.GroupName,
+                    HireDate = viewModel.HireDate,
+                    Birthday = viewModel.Birthday
                 });
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(viewModel);
-        }*/
+        }
     }
 }
 
